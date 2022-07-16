@@ -17,6 +17,11 @@ bool registerPipeline(StringRef Name, FunctionPassManager &FPM,
     FPM.addPass(addconst::AddConstPrinterPass(errs()));
     return true;
   }
+
+  if (Name == "add-const") {
+    FPM.addPass(addconst::AddConstPass());
+    return true;
+  }
   return false;
 }
 

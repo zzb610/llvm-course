@@ -40,16 +40,18 @@ AddConstAnalysis::run(llvm::Function &F, llvm::FunctionAnalysisManager &FAM) {
   return AddInsts;
 }
 
-
-llvm::PreservedAnalyses AddConstPrinterPass::run(llvm::Function &F, llvm::FunctionAnalysisManager &FAM){
-  auto& AddInsts = FAM.getResult<AddConstAnalysis>(F);
+llvm::PreservedAnalyses
+AddConstPrinterPass::run(llvm::Function &F,
+                         llvm::FunctionAnalysisManager &FAM) {
+  auto &AddInsts = FAM.getResult<AddConstAnalysis>(F);
   OS << "====================================================\n";
   OS << "|| " << F.getName() << " ||\n";
   OS << "====================================================\n";
-  for(auto &Add: AddInsts){
+  for (auto &Add : AddInsts) {
     OS << *Add << "\n";
   }
   OS << "====================================================\n";
   return llvm::PreservedAnalyses::all();
 }
+
 } // namespace addconst

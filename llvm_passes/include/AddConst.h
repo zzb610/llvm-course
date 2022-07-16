@@ -10,6 +10,7 @@ namespace addconst {
 // all the "add" instructions with const operand
 struct AddConstAnalysis : public llvm::AnalysisInfoMixin<AddConstAnalysis> {
   using Result = llvm::SmallVector<llvm::BinaryOperator *, 0>;
+  // pass working scope is Function
   Result run(llvm::Function &F, llvm::FunctionAnalysisManager &FAM);
   static llvm::AnalysisKey Key;
 };
@@ -21,6 +22,11 @@ struct AddConstPrinterPass : public llvm::PassInfoMixin<AddConstPrinterPass> {
 
 private:
   llvm::raw_ostream &OS;
+};
+
+struct AddConstPass : public llvm::PassInfoMixin<AddConstPass> {
+  llvm::PreservedAnalyses run(llvm::Function &F,
+                              llvm::FunctionAnalysisManager &FAM);
 };
 
 } // namespace addconst
