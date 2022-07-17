@@ -27,6 +27,7 @@ private:
 struct AddConstPass : public llvm::PassInfoMixin<AddConstPass> {
   llvm::PreservedAnalyses run(llvm::Function &F,
                               llvm::FunctionAnalysisManager &FAM);
+
 };
 
 } // namespace addconst

@@ -77,4 +77,4 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
 # avaialable for the sub-projects
 # =======================================================================
 add_subdirectory(lib)
-# add_subdirectory(tool)
+add_subdirectory(tool)
